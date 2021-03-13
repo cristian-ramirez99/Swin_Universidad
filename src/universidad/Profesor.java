@@ -22,14 +22,28 @@ public class Profesor extends Persona {
         this.grado = grado;
     }
 
-    @Override
-    public void modificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modificar(String horario, Double salario, String aula,
+            boolean isTutor, String grado) {
+
+        this.horario = horario;
+        this.salario = salario;
+        this.aula = aula;
+        this.isTutor = isTutor;
+        this.grado = grado;
     }
 
     @Override
     public void eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        horario = null;
+        aula = null;
+        grado = null;
+        nombre = null;
+        apellido = null;
+        NIF = null;
+        correo = null;
+        telefono = null;
+        direccion = null;
+        id = null;
     }
 
     public String getHorario() {

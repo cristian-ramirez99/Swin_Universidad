@@ -17,14 +17,29 @@ public class PAS extends Persona {
         this.extension = extension;
     }
 
-    @Override
-    public void modificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modificar(String rol, Double salario, String horario,
+            String oficina, String extension) {
+
+        this.rol = rol;
+        this.salario = salario;
+        this.horario = horario;
+        this.oficina = oficina;
+        this.extension = extension;
     }
 
     @Override
     public void eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        rol = null;
+        horario = null;
+        oficina = null;
+        extension = null;
+        nombre = null;
+        apellido = null;
+        NIF = null;
+        correo = null;
+        telefono = null;
+        direccion = null;
+        id = null;
     }
 
     public String getRol() {

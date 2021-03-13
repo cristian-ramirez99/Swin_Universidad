@@ -30,8 +30,6 @@ public abstract class Persona {
 
     public abstract void eliminar();
 
-    public abstract void modificar();
-
     public String getNombre() {
         return nombre;
     }

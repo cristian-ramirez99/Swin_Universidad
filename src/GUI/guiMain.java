@@ -747,15 +747,13 @@ public class guiMain extends javax.swing.JFrame {
          */
         //Siguiente window
         if (isAlumno) {
-            abrirJFrame(jfAlumno);
+            abrirJFrame(jfAlumno, this);
         } else if (isIT) {
-            abrirJFrame(jfIT);
+            abrirJFrame(jfIT, this);
         } else if (isPAS) {
-            abrirJFrame(jfPAS);
-        } else if (isProfesor) {
-            abrirJFrame(jfProfesor);
+            abrirJFrame(jfPAS, this);
         } else {
-            abrirJFrame(this);
+            abrirJFrame(jfProfesor, this);
         }
 
     }//GEN-LAST:event_btnCrearActionPerformed
@@ -785,19 +783,26 @@ public class guiMain extends javax.swing.JFrame {
             return;
         }
 
-        //String to double
-        double salario = Double.valueOf(strSalario);
+        try {
+            //String to double
+            double salario = Double.valueOf(strSalario);
 
-        //Una vez no hay errores instanciamos PAS
-        pas = new PAS(rol, salario, horario, oficina, extension, nombre,
-                apellido, dni, correo, telefono, direccion, id, isAlumno,
-                isProfesor, isPAS, isIT);
+            //Una vez no hay errores instanciamos PAS
+            pas = new PAS(rol, salario, horario, oficina, extension, nombre,
+                    apellido, dni, correo, telefono, direccion, id, isAlumno,
+                    isProfesor, isPAS, isIT);
 
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Debes introducir un numero "
+                    + "en salario",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         //Siguiente window 
         if (isProfesor) {
-            abrirJFrame(jfProfesor);
+            abrirJFrame(jfProfesor, jfPAS);
         } else {
-            abrirJFrame(this);
+            abrirJFrame(this, jfPAS);
         }
     }//GEN-LAST:event_btnCrearPASActionPerformed
 
@@ -822,15 +827,22 @@ public class guiMain extends javax.swing.JFrame {
             return;
         }
 
-        //String to double
-        double salario = Double.valueOf(strSalario);
+        try {
+            //String to double
+            double salario = Double.valueOf(strSalario);
 
-        //Una vez no hay errores instanciamos Profesor
-        profesor = new Profesor(horario, salario, aula, esTutor, grado, nombre,
-                apellido, dni, correo, telefono, direccion, id, isAlumno,
-                isProfesor, isPAS, isIT);
+            //Una vez no hay errores instanciamos Profesor
+            profesor = new Profesor(horario, salario, aula, esTutor, grado, nombre,
+                    apellido, dni, correo, telefono, direccion, id, isAlumno,
+                    isProfesor, isPAS, isIT);
 
-        abrirJFrame(this);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Debes introducir un numero "
+                    + "en salario",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        abrirJFrame(this, jfProfesor);
     }//GEN-LAST:event_btnCrearProfesorActionPerformed
 
     private void btnCrearAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAlumnoActionPerformed
@@ -849,7 +861,7 @@ public class guiMain extends javax.swing.JFrame {
         if (hayCamposVacios) {
             return;
         }
-        
+
         //Una vez no hay errores instanciamos Alumno
         alumno = new Alumno(horario, ciclo, aula, tutor, curso,
                 nombre, apellido, dni, correo, telefono, direccion, id, isAlumno,
@@ -857,13 +869,13 @@ public class guiMain extends javax.swing.JFrame {
 
         //Siguiente window 
         if (isIT) {
-            abrirJFrame(jfIT);
+            abrirJFrame(jfIT, jfAlumno);
         } else if (isPAS) {
-            abrirJFrame(jfPAS);
+            abrirJFrame(jfPAS, jfAlumno);
         } else if (isProfesor) {
-            abrirJFrame(jfProfesor);
+            abrirJFrame(jfProfesor, jfAlumno);
         } else {
-            abrirJFrame(this);
+            abrirJFrame(this, jfAlumno);
         }
     }//GEN-LAST:event_btnCrearAlumnoActionPerformed
 
@@ -885,21 +897,28 @@ public class guiMain extends javax.swing.JFrame {
             return;
         }
 
-        //String to double
-        double salario = Double.valueOf(strSalario);
+        try {
+            //String to double
+            double salario = Double.valueOf(strSalario);
 
-        //Una vez no hay errores instanciamos It
-        it = new IT(horario, salario, estacionDeTrabajo, extension, hacePracticas,
-                nombre, apellido, dni, correo, telefono, direccion, id, isAlumno,
-                isProfesor, isPAS, isIT);
+            //Una vez no hay errores instanciamos It
+            it = new IT(horario, salario, estacionDeTrabajo, extension, hacePracticas,
+                    nombre, apellido, dni, correo, telefono, direccion, id, isAlumno,
+                    isProfesor, isPAS, isIT);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Debes introducir un numero "
+                    + "en salario",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         //Siguiente window 
         if (isPAS) {
-            abrirJFrame(jfPAS);
+            abrirJFrame(jfPAS, jfIT);
         } else if (isProfesor) {
-            abrirJFrame(jfProfesor);
+            abrirJFrame(jfProfesor, jfIT);
         } else {
-            abrirJFrame(this);
+            abrirJFrame(this, jfIT);
         }
     }//GEN-LAST:event_btnCrearITActionPerformed
 
@@ -915,9 +934,10 @@ public class guiMain extends javax.swing.JFrame {
         System.exit(0);
     }
 
-    private void abrirJFrame(JFrame frame) {
-        frame.setSize(625, 360);
-        frame.setVisible(true);
+    private void abrirJFrame(JFrame siguienteJFrame, JFrame actualJFrame) {
+        siguienteJFrame.setSize(625, 360);
+        siguienteJFrame.setVisible(true);
+        actualJFrame.setVisible(false);
     }
 
     private String generarID() {

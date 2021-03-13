@@ -21,14 +21,28 @@ public class IT extends Persona {
         this.hacePracticas = hacePracticas;
     }
 
-    @Override
-    public void modificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modificar(String horario, Double salario, String estacionDeTrabajo,
+            String extension, boolean hacerPracticas) {
+
+        this.horario = horario;
+        this.salario = salario;
+        this.estacionDeTrabajo = estacionDeTrabajo;
+        this.extension = extension;
+        this.hacePracticas = hacerPracticas;
     }
 
     @Override
     public void eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        horario = null;
+        estacionDeTrabajo = null;
+        extension = null;
+        nombre = null;
+        apellido = null;
+        NIF = null;
+        correo = null;
+        telefono = null;
+        direccion = null;
+        id = null;
     }
 
     public String getHorario() {

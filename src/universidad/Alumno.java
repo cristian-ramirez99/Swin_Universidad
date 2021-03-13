@@ -21,14 +21,30 @@ public class Alumno extends Persona {
         this.curso = curso;
     }
 
-    @Override
-    public void modificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modificar(String horario, String ciclo, String aula, String tutor,
+            String curso) {
+        
+        this.horario = horario;
+        this.ciclo = ciclo;
+        this.aula = aula;
+        this.tutor = tutor;
+        this.curso = curso;
     }
 
     @Override
     public void eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        horario = null;
+        ciclo = null;
+        aula = null;
+        tutor = null;
+        curso = null;
+        nombre = null;
+        apellido = null;
+        NIF = null;
+        correo = null;
+        telefono = null;
+        direccion = null;
+        id = null;
     }
 
     public String getHorario() {
